@@ -8,6 +8,8 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'auto_html'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
