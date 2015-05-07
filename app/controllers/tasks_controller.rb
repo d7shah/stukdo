@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :change]
 
   # GET /tasks
   # GET /tasks.json
@@ -64,6 +64,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def change
+    @task.update_attributes(state: params[:state])
+    respond_to do |format|
+      format.html {redirect_to tasks_path, notice: "Task Updated"}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -75,3 +82,4 @@ class TasksController < ApplicationController
       params.require(:task).permit(:content, :state)
     end
 end
+
